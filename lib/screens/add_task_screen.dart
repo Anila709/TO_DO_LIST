@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AddTaskSreen extends StatelessWidget {
-  const AddTaskSreen(this.abcd, {super.key});
+  const AddTaskSreen(this.addtaskcallback, {super.key});
 
-  final Function abcd;
+  final Function addtaskcallback;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class AddTaskSreen extends StatelessWidget {
               //textStyle: const TextStyle(fontSize: 20),
             ),
             onPressed: () {
-              abcd(newTaskTitle);
+              addtaskcallback(newTaskTitle);
             },
             child: const Text(
               'Add',
