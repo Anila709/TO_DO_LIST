@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_list/models/task_data.dart';
 import 'package:to_do_list/screens/tasks_screen.dart';
 
 void main() {
@@ -11,8 +13,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: TasksScreen(),
+    return ChangeNotifierProvider(
+      create: (context) => TaskData(),
+      child: const MaterialApp(
+        home: TasksScreen(),
+      ),
     );
   }
 }

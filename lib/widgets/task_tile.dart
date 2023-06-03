@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 class TasksTile extends StatelessWidget {
-  const TasksTile({super.key, required this.taskTitle});
+  const TasksTile(
+      {super.key, required this.taskTitle, required this.longPresscallback});
   final String taskTitle;
+  final Function longPresscallback;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onLongPress: longPresscallback as VoidCallback,
       title: Text(
         taskTitle,
       ),

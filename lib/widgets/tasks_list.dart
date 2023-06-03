@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:to_do_list/widgets/task_tile.dart';
 import 'package:to_do_list/models/tasks.dart';
+import 'package:to_do_list/widgets/task_tile.dart';
+import 'package:to_do_list/models/task_data.dart';
+import 'package:provider/provider.dart';
 
-class TasksList extends StatefulWidget {
-  const TasksList({super.key, required this.tasks});
-  final List<Task> tasks;
+class TasksList extends StatelessWidget {
+  const TasksList(List<Task> tasks, {super.key});
 
-  @override
-  State<TasksList> createState() => _TasksListState();
-}
-
-class _TasksListState extends State<TasksList> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (context, index) {
-        return TasksTile(taskTitle: widget.tasks[index].name);
+    return Consumer<TaskData>(
+      builder: (context, taskData, child) {
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            final task = taskData.tasks[index];
+            return TasksTile(
+              taskTitle: task.name,
+              longPresscallback: () {
+                taskData.deleteTask(task);
+              },
+            );
+          },
+          itemCount: taskData.taskCount,
+        );
       },
-      itemCount: widget.tasks.length,
     );
   }
 }
