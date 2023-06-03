@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list/models/task_data.dart';
-import 'package:to_do_list/models/tasks.dart';
 
 class AddTaskSreen extends StatelessWidget {
   const AddTaskSreen({super.key});
@@ -10,9 +9,9 @@ class AddTaskSreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String? newTaskTitle;
     return Container(
-      color: Color(0xff757575),
+      color: const Color(0xff757575),
       child: Container(
-        padding: EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(20.0),
         decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -41,8 +40,6 @@ class AddTaskSreen extends StatelessWidget {
           TextButton(
             style: TextButton.styleFrom(
               backgroundColor: Colors.lightBlue,
-              //padding: const EdgeInsets.all(16.0),
-              //textStyle: const TextStyle(fontSize: 20),
             ),
             onPressed: () {
               Provider.of<TaskData>(context, listen: false)
